@@ -1,5 +1,5 @@
 # File: .github/workflows/repo-sync.yml
-name: Gt955
+name: sync-lxk0301-scripts
 on:
   schedule:
     - cron: '1 0,15 * * *'
@@ -9,7 +9,7 @@ on:
   push:
     branches: [ master ]
   repository_dispatch:
-    types: sync-Gt955-9527
+    types: sync-lxk0301-scripts
 jobs:
   repo-sync:
     env:
@@ -22,11 +22,21 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: sync Gt955-9527
+      - name: sync lxk0301-scripts
         uses: repo-sync/github-sync@v2
         if: env.PAT
         with:
-          source_repo: "https://github.com/GT955/9527.git"
+          source_repo: "https://github.com/lxk0301/jd_scripts.git"
           source_branch: "master"
-          destination_branch: "main"
+          destination_branch: "master"
           github_token: ${{ secrets.PAT }}
+      # 我自己同步到gitee使用，其他人可忽略
+      - name: sync github -> gitee
+        uses: Yikun/hub-mirror-action@master
+        if: env.dst_key
+        with:
+          src: github/lxk0301
+          dst: gitee/lxk0301
+          static_list: "jd_scripts"
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
