@@ -1,5 +1,5 @@
 {
-    "name": "myactions",
+    "name": "F1",
     "version": "1.0.0",
     "description": "sign everything",
     "main": "app.js",
@@ -13,7 +13,7 @@
     "keywords": [
         "sign"
     ],
-    "author": "F1",
+    "author": "F1-F",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/F1-F/F1/issues"
