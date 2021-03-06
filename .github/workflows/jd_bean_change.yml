@@ -19,7 +19,6 @@ jobs:
       - name: Checkout
         run: |
           git clone -b main https://github.com/F1-F/F1.git ~/F1
-
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -36,6 +35,7 @@ jobs:
           npm install
       - name: '运行 【京豆变动通知】'
         run: |
+          cd ~/scripts
           node jd_bean_change.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
