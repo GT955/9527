@@ -16,15 +16,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
-      - name: 获取F1
-        run: |
-          git clone -b main https://github.com/F1-F/F1.git ~/F1
-      - name: 获取备份仓库
-        if: ${{ failure() }}
+      - name: Checkout
         run: |
           git clone -b main https://github.com/F1-F/F1.git ~/F1
 
-        uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
