@@ -4,21 +4,22 @@
 name: 宠汪汪积分兑换京豆
 
 on:
+  push:
   workflow_dispatch:
   schedule:
-    - cron: '0 0,4,8,16 * * *'
-  watch:
-    types: started
+    - cron: '43 23,3,7,15 * * *'
+#  watch:
+ #   types: started
   repository_dispatch:
-    types: joy_reward
+    types: jd_joy_reward
 jobs:
-  build:
-
+  Build:
     runs-on: ubuntu-latest
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        run: |
+          git clone -b main https://github.com/GT977/F1.git ~/F1
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -30,17 +31,14 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }} # 使用 package-lock.json 的 Hash 作为缓存的 key。也可以使用 package.json 代替
-      - name: npm install
+      - name: '运行 【宠汪汪积分兑换】'
         run: |
+          cd ~/F1
           npm install
-      - name: '运行 【宠汪汪积分兑换京豆】'
-        run: |
           node jd_joy_reward.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          JD_JOY_REWARD_NOTIFY: ${{ secrets.JD_JOY_REWARD_NOTIFY }}
-          JD_JOY_REWARD_NAME: ${{ secrets.JD_JOY_REWARD_NAME }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           BARK_SOUND: ${{ secrets.BARK_SOUND }}
