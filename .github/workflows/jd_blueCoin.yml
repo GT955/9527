@@ -19,8 +19,6 @@ jobs:
     if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
-      - name: Checkout
         run: |
           git clone -b main https://github.com/GT977/F1.git ~/F1
       - name: Use Node.js ${{ matrix.node-version }}
