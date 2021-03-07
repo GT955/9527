@@ -8,8 +8,8 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 23,4,10 * * *'
-  watch:
-    types: started
+#  watch:
+#    types: started
   repository_dispatch:
     types: jd_beauty
 jobs:
