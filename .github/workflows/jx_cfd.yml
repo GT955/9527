@@ -11,7 +11,7 @@ on:
 #  watch:
  #   types: started
   repository_dispatch:
-    types: jd_cfd
+    types: jx_cfd
 jobs:
   Build:
     runs-on: ubuntu-latest
@@ -35,7 +35,7 @@ jobs:
         run: |
           cd ~/F1
           npm install
-          node jd_cfd.js
+          node jx_cfd.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
