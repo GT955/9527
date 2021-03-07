@@ -4,6 +4,7 @@
 name: 签到领现金
 
 on:
+  push:
   workflow_dispatch:
   schedule:
     - cron: '0 16 * * *'
