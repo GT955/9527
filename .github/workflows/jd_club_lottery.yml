@@ -4,6 +4,7 @@
 name: 摇京豆
 
 on:
+  push:
   workflow_dispatch:
   schedule:
     - cron: '0 16 * * *'
