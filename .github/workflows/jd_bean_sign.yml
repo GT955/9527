@@ -4,6 +4,7 @@
 name:  京东签到
 
 on:
+  push:
   workflow_dispatch:
   schedule:
     - cron: '10 16 * * *'
