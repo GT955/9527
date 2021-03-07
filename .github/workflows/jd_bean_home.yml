@@ -10,7 +10,7 @@ on:
 #  watch:
 #    types: started
   repository_dispatch:
-    types: bean_home
+    types: jd_bean_home
 jobs:
   build:
 
