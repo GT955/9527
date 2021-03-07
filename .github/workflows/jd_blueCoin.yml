@@ -4,6 +4,7 @@
 name: 东东超市兑换奖品
 
 on:
+  push:
   workflow_dispatch:
   schedule:
     - cron: '0 16 * * *'
