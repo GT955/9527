@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         run: |
-          git clone -b master https://gitlab.com/GT977/F1.git ~/scripts
+          git clone -b master https://gitlab.com/GT977/F1.git ~/F1
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -36,7 +36,7 @@ jobs:
           npm install
       - name: '运行 【领京豆额外奖励】'
         run: |
-          cd  ~/scripts
+          cd  ~/F1
           node jd_bean_home.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
