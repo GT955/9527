@@ -3,7 +3,8 @@
 
 name: 美丽研究院
 
-on:
+on: 
+  push:
   workflow_dispatch:
   schedule:
     - cron: '0 23,4,10 * * *'
